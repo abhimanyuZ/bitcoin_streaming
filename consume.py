@@ -1,5 +1,5 @@
 import json
-from apscheduler.schedulers.blocking import BlockingScheduler
+from apscheduler.schedulers.background import BackgroundScheduler
 import datetime
 import redis
 
@@ -29,9 +29,9 @@ consumer = topic.get_simple_consumer(
 
 
 # Schedules count_txn_rate() to be run per minute
-scheduleRate = BlockingScheduler()
+scheduleRate = BackgroundScheduler()
 cnt = 0
-scheduleRate.add_job(count_txn_rate, 'cron', second='0')
+scheduleRate.add_job(count_txn_rate, 'cron', second='1-59')
 scheduleRate.start()
 
 
@@ -42,7 +42,8 @@ try:
             x = message.value.decode("utf-8")
             jsonVar = json.loads(x)
             r.lpush("transactions", str(jsonVar))
-            r.ltrim("transactions", 0, 100)  # storing only last 100 transaction
+            r.ltrim("transactions", 0, 99)  # storing only last 100 transaction
+            print(message.offset)
 
 except SocketDisconnectedError as e:
     consumer = topic.get_simple_consumer()
