@@ -31,7 +31,7 @@ consumer = topic.get_simple_consumer(
 # Schedules count_txn_rate() to be run per minute
 scheduleRate = BackgroundScheduler()
 cnt = 0
-scheduleRate.add_job(count_txn_rate, 'cron', second='1-59')
+scheduleRate.add_job(count_txn_rate, 'cron', second='0')
 scheduleRate.start()
 
 
