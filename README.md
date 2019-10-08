@@ -1,6 +1,9 @@
 # Bitcoin Transaction Streaming App
 
-A streaming application for realtime bitcoin transactions using Kafka, Redis and Flask
+A streaming application for realtime bitcoin transactions using Kafka, Redis and Flask<br><br>
+It receives the stream of bitcoin transaction data from this [API](https://www.blockchain.com/api/api_websocket). Transaction log is streamed to kafka where it's analyzed in realtime.
+Transactions are consumed from a kafka consumer and only transactions made in the last 3 hours are stored in Redis for analysis.
+A REST API shows the details related to transations.
 
 ## Getting Started
 
