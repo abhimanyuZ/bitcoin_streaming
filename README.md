@@ -19,7 +19,8 @@ These instructions will get you a copy of the project up and running on your loc
 ### Installing
 
 
-After cloning the repo, fire up your terminal and enter these commands:
+* Clone the repo and navigate into repo's directory
+* Fire up your terminal and enter this command:
 ```
 pip3 install -r requirements.txt
 ```
