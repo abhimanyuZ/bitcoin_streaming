@@ -9,11 +9,12 @@ These instructions will get you a copy of the project up and running on your loc
 ### Prerequisites
 
 
-```
-Python 3.6
-Kafka
-Redis
-```
+* [Python 3.6](https://www.python.org/downloads/)
+* [Redis](https://redis.io/topics/quickstart)
+* [Kafka](https://kafka.apache.org/quickstart)
+* Python3-pip   ```sudo apt-get install python3-pip```
+
+
 
 ### Installing
 
@@ -58,10 +59,33 @@ python3 consumer.py
 python3 myapi.py
 ```
 
+
+
+## API Endpoints
+
+```
+http://127.0.0.1:5000/show_transactions
+```
+Displays latest 100 transactions in JSON format
+
+```
+http://127.0.0.1:5000/transactions_count_per_minute/{minute_value}
+```
+Display number of transactions per minute for the given minute_value.
+If {minute_value} is not mentioned, number of transactions per minute for the last hour will be displayed.
+
+```
+http://127.0.0.1:5000/high_value_addr
+```
+Displays the bitcoin addresses which has the most aggregate value in transactions in the last 3 hours.
+
+
+
+
 ## Built With
 
 * [Flask-RESTful](https://flask-restful.readthedocs.io/en/latest/) - The web framework used for API
 * [Kafka](https://kafka.apache.org/quickstart) - Streaming platform
-* [Redis](https://rometools.github.io/rome/) - Used to store transactions and related details
+* [Redis](https://redis.io/topics/quickstart) - Used to store transactions and related details
 
 
